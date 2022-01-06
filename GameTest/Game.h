@@ -1,6 +1,13 @@
 #pragma once
 #include "SDL.h"
 
+// x,y 좌표 저장 백터
+struct Vector2
+{
+	float x;
+	float y;
+};
+
 // Game class
 class Game
 {
@@ -19,11 +26,17 @@ private:
 	void UpdateGame();
 	void GenarateOutput();
 
-	// SDL이 생성한 윈도우
-	SDL_Window* mWindow;
+	
+	SDL_Window* mWindow;	// SDL이 생성한 윈도우
+	SDL_Renderer* mRenderer;	// 렌더러
+	Uint32 mTicksCount;	//
 
-	//게임이 계속 실행되어야 하는지 판단
-	bool mIsRunning;
-	// 렌더러
-	SDL_Renderer* mRenderer;
+	bool mIsRunning;	//게임이 계속 실행되어야 하는지 판단
+	
+
+	int mPaddleDir;		// 패들 방향
+	Vector2 mPaddlePos;	// 패들 위치
+	Vector2 mBallPos;	// 공 위치	
+	Vector2 mBallVel;	// 공 속력
+
 };
